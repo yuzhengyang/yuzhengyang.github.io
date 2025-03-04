@@ -1,1 +1,52 @@
-<html><body><h1>Hello, World!</h1></body></html>
+<!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>hidoc-web</title><script src="/config.js"></script><script src="/js/mermaid.min.js"></script><script>console.log('--------------------------------------');
+            console.log('当前host: ' + window.location.host);
+            console.log(configs);
+            var defaultConfig = {}; // 默认配置
+            var currentConfig = {}; // 匹配host的配置
+            for (var i = 0; i < configs.length; i++) {
+                var itemConfig = configs[i];
+
+                if (itemConfig.host === window.location.host) {
+                    currentConfig = itemConfig;
+
+                    console.log('currentConfig:');
+                    console.log(itemConfig);
+                }
+
+                if (itemConfig.host === '*') {
+                    defaultConfig = itemConfig;
+
+                    console.log('defaultConfig:');
+                    console.log(itemConfig);
+                }
+            }
+            if (currentConfig.host != undefined && currentConfig.host != null) {
+                // 如果有符合host的配置，则优先使用
+                localStorage.setItem('config', JSON.stringify(currentConfig));
+                console.log('当前使用配置: currentConfig');
+            } else {
+                // 如果没有匹配host的配置，则使用默认配置*
+                localStorage.setItem('config', JSON.stringify(defaultConfig));
+                console.log('当前使用配置: defaultConfig');
+            }
+            console.log('--------------------------------------');
+            var pointId = localStorage.getItem('pointId');
+            if (pointId == undefined || pointId == null || pointId == '' || pointId.length < 8) {
+                pointId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = (Math.random() * 16) | 0,
+                        v = c == 'x' ? r : (r & 0x3) | 0x8;
+                    return v.toString(16);
+                });
+            }
+            console.log('pointId: ' + pointId);
+            localStorage.setItem('pointId', pointId);
+            console.log('--------------------------------------');
+
+            // 反调试
+            // setInterval(function () { debugger }, 100);</script><style>/* 禁止选择 div 内的文本 */
+        .no-select {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+ */
+            user-select: none; /* 标准语法 */
+        }</style><link href="/css/chunk-02f196f0.e0048d70.css" rel="prefetch"><link href="/css/chunk-13648454.79ed8ad6.css" rel="prefetch"><link href="/css/chunk-160a212c.823eb21a.css" rel="prefetch"><link href="/css/chunk-419b8005.652b0496.css" rel="prefetch"><link href="/css/chunk-4cf5093e.39a83c09.css" rel="prefetch"><link href="/css/chunk-634bffdd.906e3acf.css" rel="prefetch"><link href="/css/chunk-70ce24d2.566cc8e3.css" rel="prefetch"><link href="/css/chunk-76e6230a.290a78bb.css" rel="prefetch"><link href="/css/chunk-7beb5d2e.9c5f2a9a.css" rel="prefetch"><link href="/css/chunk-7d53899e.f836efb3.css" rel="prefetch"><link href="/css/chunk-ac1b3722.c3b9b6fa.css" rel="prefetch"><link href="/css/chunk-cac447cc.906e3acf.css" rel="prefetch"><link href="/js/chunk-02f196f0.8d03c5ff.js" rel="prefetch"><link href="/js/chunk-13648454.d1261bf4.js" rel="prefetch"><link href="/js/chunk-160a212c.83a393b2.js" rel="prefetch"><link href="/js/chunk-2d225bb6.b40e67b5.js" rel="prefetch"><link href="/js/chunk-419b8005.79675282.js" rel="prefetch"><link href="/js/chunk-4cf5093e.13e403e5.js" rel="prefetch"><link href="/js/chunk-634bffdd.a2db8f70.js" rel="prefetch"><link href="/js/chunk-70ce24d2.51dbe2d2.js" rel="prefetch"><link href="/js/chunk-76e6230a.a85c27b2.js" rel="prefetch"><link href="/js/chunk-7beb5d2e.b3e00b29.js" rel="prefetch"><link href="/js/chunk-7d53899e.5343dea7.js" rel="prefetch"><link href="/js/chunk-8dc31390.483d499f.js" rel="prefetch"><link href="/js/chunk-ac1b3722.fe2b8258.js" rel="prefetch"><link href="/js/chunk-cac447cc.d204be24.js" rel="prefetch"><link href="/css/app.a6c11e3b.css" rel="preload" as="style"><link href="/css/chunk-vendors.649b3e96.css" rel="preload" as="style"><link href="/js/app.63ef0099.js" rel="preload" as="script"><link href="/js/chunk-vendors.f1d27c48.js" rel="preload" as="script"><link href="/css/chunk-vendors.649b3e96.css" rel="stylesheet"><link href="/css/app.a6c11e3b.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but hidoc-web doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.f1d27c48.js"></script><script src="/js/app.63ef0099.js"></script></body></html>
